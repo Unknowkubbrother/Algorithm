@@ -19,7 +19,7 @@ int partition(vector<int> &arr, int l, int r) {
     int pivot = arr[r];
     int down = l - 1;
     int up = r;
-    while(1){
+    while(true){
         do{
             ++down;
         }while(arr[down]< pivot);
