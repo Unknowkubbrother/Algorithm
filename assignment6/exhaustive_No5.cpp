@@ -16,6 +16,7 @@ void findMinWires(vector<int> &wires, vector<int> &x, int l, int k)
         wireCount++;
     }
 
+
     if (totalLength == k)
     {
         minWires = min(minWires, wireCount);
@@ -24,15 +25,18 @@ void findMinWires(vector<int> &wires, vector<int> &x, int l, int k)
 
 void subset2(vector<int> &wires, vector<int> &x, int l, int n, int k)
 {
-    findMinWires(wires, x, l, k);
-    int j;
-    if (l == 0)
-    {
-        j = 1;
+    if (l >= x.size() - 1){
+        return;
     }
-    else
-    {
-        j = x[l] + 1;
+
+    findMinWires(wires, x, l, k);
+
+    int j;
+    
+    if (l == 0){
+        j = 1;
+    }else{
+        j = x[l];
     }
 
     for (int i = j; i <= n; i++)
@@ -46,9 +50,10 @@ int main()
 {
     int k;
     int n = 3;
-    vector<int> x(n + 1);
-    vector<int> wires(n);
     cin >> k;
+
+    vector<int> x(k + 1);
+    vector<int> wires(n);
 
     for (int i = 0; i < n; i++)
     {
@@ -57,14 +62,14 @@ int main()
 
     subset2(wires, x, 0, n, k);
 
-    if (minWires != INT_MAX){
-        cout<<minWires<<endl;
-    }else{
-        cout<<0<<endl;
+    if (minWires != INT_MAX)
+    {
+        cout << minWires << endl;
+    }
+    else
+    {
+        cout << 0 << endl;
     }
 
     return 0;
 }
-
-// 8
-// 2 3 5
