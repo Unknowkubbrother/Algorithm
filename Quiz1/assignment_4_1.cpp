@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <algorithm>
 using namespace std;
 
 int bts(vector<int> &arr,int l,int r,int target){
@@ -45,6 +46,8 @@ int main(){
     for(int i=0;i<n;i++){
         cin>>arr[i];
     }
+
+    sort(arr.begin(),arr.end());
 
     cout<<duplicate(arr,0,arr.size()-1,k);
 
