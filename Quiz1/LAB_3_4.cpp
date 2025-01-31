@@ -7,14 +7,14 @@ using namespace std;
 int maxCrossingSum(const vector<int>& prices, int low, int mid, int high) {
     int leftSum = INT_MIN;
     int sum = 0;
-    for (int i = mid; i >= low; --i) {
+    for (int i = mid; i >= low; i--) {
         sum += prices[i];
         leftSum = max(leftSum,sum);
     }
 
     int rightSum = INT_MIN;
     sum = 0;
-    for (int i = mid + 1; i <= high; ++i) {
+    for (int i = mid + 1; i <= high; i++) {
         sum += prices[i];
         rightSum = max(rightSum,sum);
     }
