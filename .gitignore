@@ -1,1 +1,8 @@
-**/*.exe
+*
+!/**/
+!*.*
+.DS_Store
+*/tempCodeRunnerFile.*
+*/.vscode/*
+*/.idea/*
+*/.vs/*
