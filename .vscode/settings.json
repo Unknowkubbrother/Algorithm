@@ -60,5 +60,6 @@
         "xhash": "cpp",
         "string": "cpp",
         "queue": "cpp"
-    }
+    },
+    "C_Cpp.errorSquiggles": "disabled"
 }
