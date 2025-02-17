@@ -32,7 +32,6 @@ int main(){
     };
     queue<room> q;
 
-    
     int n = sizeof(arr)/sizeof(arr[0]);
     
     sort(arr,arr+n,compare);
