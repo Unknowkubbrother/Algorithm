@@ -22,6 +22,18 @@ void bfs(vector< vector<int> > &adjList){
     }
 }
 
+void dfs(vector< vector<int> > &adjList, vector<bool> &visit, int startVertex){
+    visit[startVertex] = true;
+    cout<<startVertex<<" ";
+
+    for(int i = 0; i < adjList[startVertex].size(); i++){
+        int nextVertex = adjList[startVertex][i];
+        if (!visit[nextVertex]){
+            dfs(adjList, visit, nextVertex);
+        }
+    }
+}
+
 int main(){
     int n,m;
     cin>>n>>m;
@@ -31,17 +43,20 @@ int main(){
     for(int i=0;i<m;i++){
         int src,dest;
         cin>>src>>dest;
-        adjList[src-1].push_back(dest-1);
+        adjList[src].push_back(dest);
+        adjList[dest].push_back(src);
     }
 
-    for(int i=0;i<n;i++){
-        cout<<"i : "<<i+1<<" => ";
-        for(int j=0;j<adjList[i].size();j++){
-            cout<<adjList[i][j]+1<<" ";
-        }
-        cout<<endl;
-    }
-    bfs(adjList);
+    // for(int i=0;i<n;i++){
+    //     cout<<"i : "<<i<<" => ";
+    //     for(int j=0;j<adjList[i].size();j++){
+    //         cout<<adjList[i][j]<<" ";
+    //     }
+    //     cout<<endl;
+    // }
+    // bfs(adjList);
+    vector<bool> visit(n,false);
+    dfs(adjList,visit,2);
 
 
 }

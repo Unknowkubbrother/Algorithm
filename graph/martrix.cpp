@@ -38,8 +38,8 @@ void DFS(vector< vector<int > > &adjMatrix, vector<bool> &visit,int startVertex)
 
 
 int SortedPath(vector<int> &parent,int find,int path){
-    if (find == -1){
-        return path-1;
+    if (parent[find] == -1){
+        return path;
     }
     return SortedPath(parent,parent[find],path+1);
 }
