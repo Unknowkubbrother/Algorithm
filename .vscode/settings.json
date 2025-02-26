@@ -78,7 +78,12 @@
         "variant": "cpp",
         "__hash_table": "cpp",
         "deque": "cpp",
-        "regex": "cpp"
+        "regex": "cpp",
+        "__tree": "cpp",
+        "map": "cpp",
+        "set": "cpp",
+        "unordered_set": "cpp",
+        "valarray": "cpp"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }
