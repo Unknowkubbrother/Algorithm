@@ -77,7 +77,8 @@
         "stack": "cpp",
         "variant": "cpp",
         "__hash_table": "cpp",
-        "deque": "cpp"
+        "deque": "cpp",
+        "regex": "cpp"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }
