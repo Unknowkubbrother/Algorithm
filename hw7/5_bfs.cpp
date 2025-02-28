@@ -13,7 +13,6 @@ int bfs(vector<vector<char>> &adjMatrix,int startRow,int startCol){
 
     char oldColor = adjMatrix[startRow][startCol];
     q.push({startRow,startCol});
-    adjMatrix[startRow][startCol] = 'G';
 
     int count = 1;
 
@@ -23,7 +22,8 @@ int bfs(vector<vector<char>> &adjMatrix,int startRow,int startCol){
 
         int row = u.first;
         int col = u.second;
-        
+        adjMatrix[startRow][startCol] = 'G';
+
         for(int i = 0;i<4;i++){
             int newRow = row + offsetRow[i];
             int newCol = col + offsetCol[i];
@@ -41,7 +41,6 @@ int bfs(vector<vector<char>> &adjMatrix,int startRow,int startCol){
             }
         
             count++;
-            adjMatrix[newRow][newCol] = 'G';
             q.push({newRow,newCol});
         }
     }
