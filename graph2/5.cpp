@@ -1,50 +1,76 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int main()
-{
-    int n, m;
-    cin >> n >> m;
-    vector<vector<int>> dist(n, vector<int>(n, INT_MAX));
+void Prim(vector<vector<pair<int,int>>> &adjList,vector<int> &dist,vector<int> &parent,int startVertex){
+    priority_queue<pair<int,int>, vector<pair<int,int>>> pq;
 
-    for (int i = 0; i < n; i++)
-    {
-        dist[i][i] = 0;
-    }
+    int size = adjList.size();
+    vector<bool> visit(size,false);
 
-    for (int i = 0; i < m; i++)
-    {
-        int src, dest, weight;
-        cin >> src >> dest >> weight;
-        dist[src - 1][dest - 1] = weight;
-        dist[dest - 1][src - 1] = weight;
-    }
+    pq.push({0,startVertex});
+    dist[startVertex] = 0;
 
-    int size = dist.size();
+    while(!pq.empty()){
+        int u = pq.top().second;
+        pq.pop();
+        visit[u] = true;
 
-    for (int k = 0; k < size; k++)
-    {
-        for (int i = 0; i < size; i++)
-        {
-            for (int j = 0; j < size; j++)
-            {
-                if (dist[i][k] != INT_MAX && dist[k][j] != INT_MAX &&
-                    dist[i][k] + dist[k][j] < dist[i][j])
-                {
-                    dist[i][j] = dist[i][k] + dist[k][j];
-                }
+        for(int i=0;i<adjList[u].size();i++){
+            int weight = adjList[u][i].first;
+            int nextVertex = adjList[u][i].second;
+
+            if (!visit[nextVertex] && weight > dist[nextVertex]){
+                dist[nextVertex] = weight;
+                pq.push({dist[nextVertex],nextVertex});
+                parent[nextVertex] = u;
             }
         }
     }
 
-    for (int i = 0; i < size; i++)
-    {
-        for (int j = 0; j < size; j++)
-        {
-            cout << dist[i][j] << " ";
-        }
-        cout << "\n";
+
+}
+
+int findminDistancePath(vector<int> &parent,vector<int> &dist,int find,int minPath = INT_MAX){
+    if (parent[find] == -1){
+        return minPath;
     }
+    return findminDistancePath(parent,dist,parent[find],dist[find]<minPath?dist[find]:minPath);
+}
+
+int main()
+{
+    int n, m;
+    cin >> n >> m;
+    vector<vector<pair<int,int>>> adjList(n+1);
+
+    for (int i = 0; i < m; i++)
+    {
+        int src, dest, weight;
+        cin>>src>>dest>>weight;
+        adjList[src].push_back({weight,dest});
+        adjList[dest].push_back({weight,src});
+    }
+
+    int size = adjList.size();
+
+    int start,end,people;
+    cin>>start>>end>>people;
+
+    vector<int> dist(size,0);
+    vector<int> parent(size,-1);
+
+    Prim(adjList,dist,parent,start);
+
+    int numberpossibleGo = findminDistancePath(parent,dist,end);
+
+    int round = 0;
+    while(people>0){
+        people++;
+        round++;
+        people-=numberpossibleGo;
+    }
+
+    cout<<round;
 
     return 0;
 }
@@ -61,3 +87,16 @@ int main()
 // 5 7 20
 // 7 6 30
 // 1 7 99
+
+// 7 10 
+// 1 2 30 
+// 1 3 15 
+// 1 4 10 
+// 2 4 25 
+// 2 5 60 
+// 3 4 40 
+// 4 7 35 
+// 3 6 20 
+// 5 7 20 
+// 7 6 30
+// 1 4 8
