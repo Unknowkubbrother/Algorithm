@@ -3,7 +3,6 @@
 #include <queue>
 #include <algorithm>
 using namespace std;
-
 typedef struct
 {
     int start;
@@ -12,7 +11,13 @@ typedef struct
 
 bool compare(list a, list b)
 {
-    return (a.end - a.start) >= (b.end - b.start);
+    return (a.end - a.start) > (b.end - b.start);
+}
+
+void printArr(vector<list> &arr){
+    for(int i=0;i<arr.size();i++){
+        cout<<"("<<arr[i].start<<","<<arr[i].end<<") ";
+    }
 }
 
 void ManageRoom(vector<list> &timeLine, queue<list> room[], int k)
@@ -47,7 +52,20 @@ int main()
 
     sort(timeLine.begin(), timeLine.end(), compare);
 
+
     ManageRoom(timeLine, room, k);
 
     return 0;
 }
+
+// 10 3 
+// 1 4 
+// 3 5 
+// 0 6 
+// 5 7 
+// 3 8 
+// 5 9 
+// 6 10 
+// 8 11 
+// 8 12 
+// 2 13

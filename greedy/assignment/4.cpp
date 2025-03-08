@@ -11,14 +11,7 @@ typedef struct{
 } line;
 
 bool compare(line a,line b){
-    return a.start <= b.start && a.end <= b.end;    
-}
-
-void printArr(vector<line> arr){
-    for(int i=0;i<arr.size();i++){
-        cout<<"("<<arr[i].start<< ","<<arr[i].end<<"),";
-    }
-    cout<<endl;
+    return a.end < b.end;    
 }
 
 int main(){
@@ -32,9 +25,7 @@ int main(){
     cin>>finalStart>>finalEnd;
 
     sort(arr.begin(),arr.end(),compare);
-
-    // printArr(arr);
-
+    
     int countLine = 0;
 
     vector<line> result;
