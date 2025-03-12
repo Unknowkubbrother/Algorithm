@@ -20,7 +20,7 @@ void permute(int arr[], int start, int end) {
         }
         cout << endl;
         return;
-    }
+    }  
 
     for (int i = start; i <= end; i++) {
         swap(arr[start], arr[i]);
@@ -33,8 +33,8 @@ void permute(int arr[], int start, int end) {
 }
 
 int main() {
-    int n = 16;
-    int arr[] = {-1, 0, 1, 2, 3,4,5,6,7,8,9,10,11,12,13,14,15};
+    int n = 4;
+    int arr[] = {-1, 0, 1, 2, 3,4};
 
     permute(arr, 1, n);
     cout << "Total solutions: " << solutionCount << endl;

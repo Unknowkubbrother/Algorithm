@@ -1,8 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int main()
-{
+int main(){
     int f, n;
     cin >> f >> n;
     
@@ -46,17 +45,7 @@ int main()
         }
     }
 
-    for(int i=0;i<size;i++){
-        cout<<i+1<<" : ";
-        for(int j=0;j<size;j++){
-            cout<<dist[i][j]<<" ";
-        }
-        cout<<"\n";
-    }
-
-    int bestPosition = -1;
-    int maxMinDist = -1;
-
+    
     for (int i = 0; i < size; i++)
     {
         if (existHospital[i])
@@ -81,15 +70,6 @@ int main()
     }
 
     cout << maxMinDist <<" "<<bestPosition;
+
     return 0;
 }
-
-
-// 1 6 
-// 2 
-// 1 2 10 
-// 2 3 10 
-// 3 4 10 
-// 4 5 10 
-// 5 6 10 
-// 6 1 10 

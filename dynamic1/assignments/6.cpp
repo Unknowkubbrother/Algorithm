@@ -16,6 +16,7 @@ int solve(int n, int m, vector<int> &memo)
     memo[n] = ways;
     return ways;
 }
+
 int main()
 {
     int n, m;
