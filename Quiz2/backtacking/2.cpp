@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-void solve(vector<int> &X,vector<int> &arr,int l, int r,int k,int &sum){
+void solve(vector<int> &X,vector<int> &arr,int l, int r,int k,int sum){
 
     if (sum > k){
         return;

@@ -3,15 +3,17 @@ using namespace std;
 
 void permutations(vector<int> &X,int start,int end,int &count){
     if (start == end-1){
-        for(int i=1;i<end;i++){
-            if (X[i-1] == 1 && X[i] == 2){
-                count++;
-            }
+        for(int i=0;i<end;i++){
+            // if (X[i-1] == 1 && X[i] == 2){
+            //     count++;
+            // }
 
-            if (X[i-1] == 2 && X[i] == 1){
-                count++;
-            }
+            // if (X[i-1] == 2 && X[i] == 1){
+            //     count++;
+            // }
+            cout<<X[i]<<" ";
         }
+        cout<<"\n";
     }
 
     for(int i=start;i<end;i++){
